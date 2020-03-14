@@ -34,10 +34,10 @@ impl<T> LinksDB<T> {
                        .ok()
                        .unwrap();
         unsafe {
-            let mmap = MmapMut::map_mut(&self.db_file)
+            self.mmap = MmapMut::map_mut(&self.db_file)
                 .ok()
                 .unwrap();
-            let mmap_ptr = mmap
+            let mmap_ptr = self.mmap
                 .first()
                 .unwrap();
 
